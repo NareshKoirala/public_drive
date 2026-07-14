@@ -14,4 +14,5 @@ def Welcome():
 
 @app.post("/auth/{password}")
 def auth(password):
+    
     return os.environ.get("WEBPASS") == password if os.environ.get("JWTS") else None
