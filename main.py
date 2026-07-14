@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 import os
+from dotenv import load_dotenv
 
 app = FastAPI()
+
+load_dotenv()
 
 
 @app.get("/")
@@ -11,4 +14,4 @@ def Welcome():
 
 @app.post("/auth/{password}")
 def auth(password):
-    return
+    return os.environ.get("WEBPASS") == password if os.environ.get("JWTS") else None
